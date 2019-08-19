@@ -1,0 +1,105 @@
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Script Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+    
+        <script>
+            //Score keeping
+            let userScore = 0;
+            let computerScore = 0;
+
+            //Generates a random number
+            function autoMove(){
+                let moveType = Math.random() * 4; 
+                return moveType;
+            }
+
+            //Uses random number to make a move and returns it
+            function computerPlay(){
+                let move = autoMove();
+                if(move <=1){
+                    return "rock";
+                }else if(move <=2){
+                    return "paper";
+                }
+                else{
+                    return "scissors";
+                }
+            }
+            //Asks user for input then returns it
+            function userMove(){
+                let move = prompt("Make your move", "Rock, Paper or Scissors")
+                return move.toLowerCase();
+            }
+            //Compares values and returns win or lose
+            //Choice 1 is user move
+            function compare(choice1, choice2){
+                if (choice1 === choice2) {
+                return "It's a tie!";
+            }
+            if (choice1 === "rock") {
+                if (choice2 === "scissors") {
+                    // rock wins
+                    userScore++;
+                    return "You win!";
+                   
+                } else {
+                    // paper wins
+                    computerScore++;
+                    return "You lose! Try again.";
+                    
+                }
+            }
+            if (choice1 === "paper") {
+                if (choice2 === "rock") {
+                    // paper wins
+                    userScore++;
+                    return "You win!";
+                } else {
+                    // scissors wins
+                    computerScore++;
+                    return "You lose! Try again.";
+                }
+            }
+            if (choice1 === "scissors") {
+                if (choice2 === "rock") {
+                    // rock wins
+                    computerScore++;
+                    return "You lose! Try again.";
+                } else {
+                    // scissors wins
+                    userScore++;
+                    return "You win!";
+                }
+            }
+            }
+
+            function playRound(playerSelection, computerSelection){
+                compare(playerSelection, computerSelection);
+            }
+
+            function game(){
+                for(i = 0; i < 5; i++){
+                    playRound(userMove(), computerPlay());
+                }
+                if (userScore > computerScore){
+                    console.log("You have won");
+                }else{
+                    console.log("Better luck next time");
+                }
+            }
+
+
+        </script>
+
+    </body>
+</html>
