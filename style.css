@@ -1,0 +1,24 @@
+body {
+	background-image: linear-gradient(#8a00e6, #667);
+	background-repeat: no-repeat;
+	height: 100vh;
+	width: 99%;
+	color: white;
+}
+
+#main-container {
+	height: 100%;
+	width: 100%;
+}
+
+#scorebox {
+	float: left;
+}
+
+#user-choice {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
